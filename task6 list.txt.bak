@@ -1,0 +1,50 @@
+#1 bestCharge()
+输入：
+    inputs:[String]
+	tagsInfo:#2
+    summary_1:#3
+	summary_2:#4
+输出：
+    inputs:#2
+	tagsInfo:#3,#4,#5
+	summary_1:#5
+	summary_2:#5
+
+#2 转换清单格式并计算小计 toTags()
+输入：
+    inputs:String
+	allItems:[{
+		id:String
+	    name:String
+		price:float
+	}]:loadAllitems()
+输出：
+    tagsInfo:[{
+	    id:String
+		name:String
+		price:float
+		count:int
+		sum:float
+	}]
+
+#3 计算第一种优惠方式(满30减6元） do30_6()
+输入:
+    tagsInfo
+输出：
+    summary_1：{sum:float,save:float}
+
+
+#4 计算第二种优惠方式(指定商品半价) doHalf()
+输入：
+    tagsInfo
+	promotions:[String]:loadPromotions()
+输出：
+    summary_2：{sum:float,save:float,name:[String]}
+
+#5 打印清单 printReceipt()
+输入：
+    summary_1
+	summary_2
+	tagsInfo
+输出：
+    receipt:String:console.log()
