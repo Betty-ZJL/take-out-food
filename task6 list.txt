@@ -1,14 +1,16 @@
 #1 bestCharge()
 输入：
-    inputs:[String]
+    selectedItems:[String]
     tagsInfo:#2
     summary_1:#3
     summary_2:#4
+    receipt：#5
 输出：
     inputs:#2
     tagsInfo:#3,#4,#5
     summary_1:#5
     summary_2:#5
+    receipt：String
 
 #2 转换清单格式并计算小计 toTags()
 输入：
@@ -47,4 +49,4 @@
     summary_2
     tagsInfo
 输出：
-    receipt:String:console.log()
+    receipt:String
