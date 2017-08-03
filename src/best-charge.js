@@ -1,7 +1,7 @@
 //转换清单格式并计算小计
 function toTags(inputs) {
-  var allItems=loadAllItems();
-  var tagsInfo=[];
+  let allItems=loadAllItems();
+  let tagsInfo=[];
   for (let item of inputs){
     tagsInfo.push({id:item.split(' x ')[0],count:item.split(' x ')[1]});
   }
@@ -17,7 +17,7 @@ function toTags(inputs) {
 
 //计算第一种优惠方式(满30减6元）
 function do30_6(tagsInfo) {
-  var summary={sum:0,save:0};
+  let summary={sum:0,save:0};
   for (let tag of tagsInfo){
     summary.sum+=tag.sum;
   }
@@ -30,8 +30,8 @@ function do30_6(tagsInfo) {
 
 //计算第二种优惠方式(指定商品半价)
 function doHalf(tagsInfo) {
-  var summary={sum:0,save:0,name:[]};
-  var promotions=loadPromotions()[1].items;
+  let summary={sum:0,save:0,name:[]};
+  let promotions=loadPromotions()[1].items;
   for(let tag of tagsInfo){
     summary.sum+=tag.sum;
     if(promotions.includes(tag.id)){
@@ -45,8 +45,8 @@ function doHalf(tagsInfo) {
 
 //打印清单
 function printReceipt(summary_1,summary_2,tagsInfo) {
-  var sum=0;
-  var receipt='============= 订餐明细 =============\n';
+  let sum=0;
+  let receipt='============= 订餐明细 =============\n';
   for (let tag of tagsInfo){
     receipt+=`${tag.name} x ${tag.count} = ${tag.sum}元\n`;
   }
@@ -70,9 +70,9 @@ function printReceipt(summary_1,summary_2,tagsInfo) {
 }
 
 function bestCharge(selectedItems) {
-    var tagsInfo=toTags(selectedItems);
-    var summary_1=do30_6(tagsInfo);
-    var summary_2=doHalf(tagsInfo);
-    var receipt=printReceipt(summary_1,summary_2,tagsInfo);
+    let tagsInfo=toTags(selectedItems);
+    let summary_1=do30_6(tagsInfo);
+    let summary_2=doHalf(tagsInfo);
+    let receipt=printReceipt(summary_1,summary_2,tagsInfo);
     return receipt;
 }
